@@ -47,9 +47,7 @@ for g in glob.glob(args.genetrees+"*"+args.ext):
 
 # FUNCTIONS    
 def CommonTips(tree1, tree2):
-'''
-get a list of common tips between two trees
-'''
+    """get a list of common tips between two trees"""
     tree1Tips = tree1.get_leaf_names()
     tree2Tips = tree2.get_leaf_names()
     commonTips = []
@@ -59,10 +57,8 @@ get a list of common tips between two trees
     return(commonTips)
             
 def GetBranchLengths(tree):
-'''
-this function returns a list of branch lengths (terminal and internal), minus the 0.0 branch length that ete3 puts in at the root
-there should be n - 3 internal branch lengths + n terminal branch lengths where n is equal to the number of tips in the tree
-'''
+    """this function returns a list of branch lengths (terminal and internal), minus the 0.0 branch length that ete3 puts in at the root
+    there should be n - 3 internal branch lengths + n terminal branch lengths where n is equal to the number of tips in the tree"""
     blengths = []
     for node in tree.traverse("postorder"):
         parentNode = node.up
@@ -72,9 +68,7 @@ there should be n - 3 internal branch lengths + n terminal branch lengths where 
 
 
 def TerminalBranchLength(taxon, tree):
-'''
-this function gets the terminal branch length for a specified taxon and tree
-'''
+    """this function gets the terminal branch length for a specified taxon and tree"""
     parentNode = (tree&taxon).up
     terminalBL = tree.get_distance(taxon, parentNode)
     return(terminalBL)
