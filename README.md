@@ -60,9 +60,10 @@ This step calculates branch lengths from the gene alignments under the constrain
 ```
 for f in *.fasta;
 do
-iqtree -s $f -g $f.constraint -m GTR+G4 -T 1
+iqtree -s $f -g $f.constraint -m GTR+G4 -T 1;
+done
 ```
 
 ### Run the BLC analysis
 
-Now that you have (1) a concatenated ML tree, and (2) gene trees with the same topology but estimated branch lengths, you can run the BLC.py script.
+Now that you have (1) a concatenated ML tree, and (2) gene trees with the same topology but estimated branch lengths, you need one more **file designating the outgroup taxa** to run BLC.py. This is just a text file with one outgroup taxon name per line.
