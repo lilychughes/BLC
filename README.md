@@ -11,3 +11,9 @@ There are four main steps:
 4. Correlate the terminal branch lengths for each taxon in the constrained gene tree with the concatenated ML tree
 
 Gene sequences that are contaminated, paralogous, misassembled or misaligned, should have excessively long branch lengths in the constrained gene trees. These sequences are then flagged and removed from downstream analyses. 
+
+## Required Software
+* [Python3](https://www.anaconda.com)
+* [ete3](http://etetoolkit.org) 
+* [IQ-TREE](http://www.iqtree.org) >= 2.0 or RAxML (instructions for IQ-TREE are below)
+
