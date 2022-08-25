@@ -23,9 +23,7 @@ args, unknown = parser.parse_known_args()
 c = Tree(args.constraint)
 
 def CommonTips(tree, taxlist):
-'''
-Function to get a list of common tips between two trees
-'''
+    """Function to get a list of common tips between two trees"""
     tree1Tips = tree.get_leaf_names()
     commonTips = []
     for tip in tree1Tips:
@@ -40,9 +38,7 @@ for a in glob.glob(args.alignments+"*"+args.ext):
     alignments.append(a)
 
 def GetAliTaxa(ali):
-'''
-Makes a list of taxon names in a FASTA alignment
-'''
+    """Makes a list of taxon names in a FASTA alignment"""
     tips = []
     for line in ali:
         if line.startswith(">"):
