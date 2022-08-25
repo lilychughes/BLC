@@ -2,6 +2,8 @@
 
 ## Branch length correlation of gene trees and species trees
 
+**Note:** I'm currently testing these scripts after some changes.   
+
 This is a test to filter contamination in phylogenomic datasets based on [Simion et al. (2017) in *Current Biology*](https://www.sciencedirect.com/science/article/pii/S0960982217301999). The code here was used as part of the quality control pipeline by [Arcila et al. (2021) in *Systematic Biology*](https://academic.oup.com/sysbio/article-abstract/70/6/1123/6204118).
 
 There are four main steps:
@@ -32,7 +34,7 @@ When you are ready to run your analysis, remember to type:
 
 ## Running a BLC Analysis
 
-### Generate an initial concatenated tree
+### 1. Generate an initial concatenated tree
 
 For a full list of options, please consult the [IQ-TREE manual](http://www.iqtree.org/doc/). A simple analysis might look like:
 
@@ -40,7 +42,7 @@ For a full list of options, please consult the [IQ-TREE manual](http://www.iqtre
 iqtree -s Concatenated.fasta -m GTR+G4 -T AUTO
 ```
 
-### Generate gene tree constraints
+### 2. Generate gene tree constraints
 
 Put all of your individual gene alignments into a single directory. They must be FASTA-formatted. ConstraintTreeMaker.py will make constraint trees for each alignment file, based on the concatenated ML topology. These trees will end in .constraint.
 
@@ -53,7 +55,7 @@ The script ConstraintTreeMaker.py has three arguments:
 python3 ConstraintTreeMaker.py -c Concatenated.treefile -a /path/to/alignments/ -e .fasta
 ```
 
-### Generate constrained gene trees
+### 3. Generate constrained gene trees
 
 This step calculates branch lengths from the gene alignments under the constrained topology. It runs relatively quickly, since there is no topology search. An example loop might look like this:
 
@@ -64,6 +66,12 @@ iqtree -s $f -g $f.constraint -m GTR+G4 -T 1;
 done
 ```
 
-### Run the BLC analysis
+### 4. Run the BLC analysis
 
 Now that you have (1) a concatenated ML tree, and (2) gene trees with the same topology but estimated branch lengths, you need one more **file designating the outgroup taxa** to run BLC.py. This is just a text file with one outgroup taxon name per line.
+
+**More info goes here**
+
+### 5. Prune outlier sequences from gene alignments for downstream analysis
+
+**More info goes here**
