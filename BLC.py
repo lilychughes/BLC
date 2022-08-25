@@ -17,7 +17,7 @@ import glob
 
 parser = argparse.ArgumentParser(description="Requires python 3 and the python package ete3. This script was written by Lily Hughes, lilychughes@gmail.com. ")
 parser.add_argument('-g', '--genetrees' , dest = 'genetrees' , type = str , default= None , required= True, help = 'Directory with newick-formatted constrained ML gene trees.')
-parser.add_argument('-g', '--ext' , dest = 'ext' , type = str , default= ".treefile" , required= False, help = 'File extension of newick-formatted constrained ML gene trees. Default .treefile')
+parser.add_argument('-e', '--ext' , dest = 'ext' , type = str , default= ".treefile" , required= False, help = 'File extension of newick-formatted constrained ML gene trees. Default .treefile')
 parser.add_argument('-c', '--concat' , dest = 'concat' , type = str , default= None , required= True, help = 'Newick-formatted ML concatenated tree.')
 parser.add_argument('-r', '--ratio' , dest = 'ratio' , type = int , default= 5 , required= False, help = 'Threshold ratio for branch lengths above which taxa are flagged. Default 5 (5X greater than concatenated branch length).')
 parser.add_argument('-o', '--outgroups' , dest = 'outgroups' , type = str , default= None , required= True, help = 'Text file with the outgroup taxa. One taxon name per line.')

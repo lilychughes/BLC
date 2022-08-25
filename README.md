@@ -17,7 +17,7 @@ Gene sequences that are potentially contaminated, paralogous, misassembled or mi
 ## Required Software
 * [Python3](https://www.anaconda.com)
 * [ete3](http://etetoolkit.org) 
-* [IQ-TREE](http://www.iqtree.org) or RAxML (instructions for IQ-TREE are below)
+* [IQ-TREE](http://www.iqtree.org) or RAxML (example with IQ-TREE below)
 
 ## Install dependencies with conda
 ```
