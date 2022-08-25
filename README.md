@@ -15,5 +15,18 @@ Gene sequences that are contaminated, paralogous, misassembled or misaligned, sh
 ## Required Software
 * [Python3](https://www.anaconda.com)
 * [ete3](http://etetoolkit.org) 
-* [IQ-TREE](http://www.iqtree.org) >= 2.0 or RAxML (instructions for IQ-TREE are below)
+* [IQ-TREE](http://www.iqtree.org) or RAxML (instructions for IQ-TREE are below)
+
+## Install dependencies with conda
+```
+conda create -n blc python=3
+conda activate blc
+conda install -c bioconda iqtree
+conda install -c etetoolkit ete3 ete_toolchain
+conda deactivate
+```
+
+When you are ready to run your analysis, remember to type:
+`conda activate blc`
+
 
