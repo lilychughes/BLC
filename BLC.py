@@ -147,6 +147,6 @@ for g in gtrees:
     
     # Write it to a file
     out = open(g+".R2.txt", "w")
-    out.write("R-squared without flagged taxa for "+g+": "+str(r_value**2))
+    out.write("R-squared without flagged taxa for "+g+": "+str(r_value**2)+"\n")
     out.close()
     
