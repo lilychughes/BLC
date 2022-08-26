@@ -15,6 +15,7 @@ Gene sequences that are potentially contaminated, paralogous, misassembled or mi
 ## Required Software
 * [Python3](https://www.anaconda.com)
 * [ete3](http://etetoolkit.org) 
+* [Biopython](https://biopython.org)
 * [IQ-TREE](http://www.iqtree.org) or RAxML (example with IQ-TREE below)
 
 ## Install dependencies with conda
@@ -22,6 +23,7 @@ Gene sequences that are potentially contaminated, paralogous, misassembled or mi
 conda create -n blc python=3
 conda activate blc
 conda install -c bioconda iqtree
+conda install -c conda-forge biopython
 conda install -c etetoolkit ete3 ete_toolchain
 conda deactivate
 ```
@@ -81,5 +83,18 @@ python3 BLC.py -g /path/to/estimated/genetrees/ -e .treefile -c Concatenated.tre
 
 BLC.py outputs 1-2 files per gene tree in the same directory as your estimated gene trees. The first file is the R-squared value for the terminal branch lengths of the gene tree and concatenated tree (**ending in .R2.txt**). The second output is a list of taxa if they were flagged for long branches for that gene (**ending in .flagged_taxa.txt**). 
 
+**A note about the R-squared values:** While I often examine gene trees where R-squared is very low, this can sometimes just be due to short branch lengths in the gene tree, which is not necessarily a cause for concern. Short loci often have only a small amount of phylogenetic information.
+
 ### 5. Prune outlier sequences from gene alignments for downstream analysis
 
+To remove taxa flagged by BLC.py from your gene alignments, use the DropTaxaBLC.py script. 
+
+DropTaxaBLC.py has only two arguments:
+- -a: The path to the directory with your FASTA-formated gene alignments.
+- -e: -e: The extension for the gene alignment files. (Default= .fasta)
+
+```
+python3 DropTaxaBLC.py -a /path/to/gene/alignments/ -e .fasta
+```
+
+This script will remove the taxa flagged by BLC.py. It will append the alignment file name with .BLC_cleaned.
