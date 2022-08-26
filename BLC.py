@@ -74,7 +74,7 @@ def TerminalBranchLength(taxon, tree):
     return(terminalBL)
 
 
-for g in genetrees:
+for g in gtrees:
     t = Tree(g)
 
     common_taxa = CommonTips(t, c)
