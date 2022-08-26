@@ -83,7 +83,7 @@ python3 BLC.py -g /path/to/estimated/genetrees/ -e .treefile -c Concatenated.tre
 
 BLC.py outputs 1-2 files per gene tree in the same directory as your estimated gene trees. The first file is the R-squared value for the terminal branch lengths of the gene tree and concatenated tree (**ending in .R2.txt**). The second output is a list of taxa if they were flagged for long branches for that gene (**ending in .flagged_taxa.txt**). 
 
-**A note about the R-squared values:** While I often examine gene trees where R-squared is very low, this can sometimes just be due to short branch lengths in the gene tree, which is not necessarily a cause for concern. Short loci often have only a small amount of phylogenetic information.
+> **A note about the R-squared values:** While I often examine gene trees where R-squared is very low, this can sometimes just be due to short branch lengths in the gene tree, which is not necessarily a cause for concern. Short loci often have only a small amount of phylogenetic information.
 
 ### 5. Prune outlier sequences from gene alignments for downstream analysis
 
