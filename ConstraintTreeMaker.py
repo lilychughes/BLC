@@ -19,11 +19,9 @@ args, unknown = parser.parse_known_args()
 ######
 
 
-# Open ML tree
-c = Tree(args.constraint, format=9)
 
 def CommonTips(tree, taxlist):
-    """Function to get a list of common tips between two trees"""
+    """Function to get a list of common tips between the tree and a list of taxon names"""
     tree1Tips = tree.get_leaf_names()
     commonTips = []
     for tip in tree1Tips:
@@ -36,6 +34,7 @@ alignments = []
 
 for a in glob.glob(args.alignments+"*"+args.ext):
     alignments.append(a)
+alignments.sort()
 
 def GetAliTaxa(ali):
     """Makes a list of taxon names in a FASTA alignment"""
@@ -52,8 +51,7 @@ for a in alignments:
     ali = open(a)
     atips = GetAliTaxa(ali)
     ali.close()
+    c = Tree(args.constraint)
     commonTaxa = CommonTips(c, atips)
-    constraint = c
-    constraint.prune(commonTaxa)
-    constraint.write(format=9, outfile=a+".constraint")
-    
+    c.prune(commonTaxa)
+    c.write(format=9, outfile=a+".constraint")
