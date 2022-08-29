@@ -20,7 +20,7 @@ args, unknown = parser.parse_known_args()
 
 
 # Open ML tree
-c = Tree(args.constraint)
+c = Tree(args.constraint, format=9)
 
 def CommonTips(tree, taxlist):
     """Function to get a list of common tips between two trees"""
