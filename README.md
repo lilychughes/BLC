@@ -20,9 +20,9 @@ Gene sequences that are potentially contaminated, paralogous, misassembled or mi
 ```
 conda create -n blc python=3
 conda activate blc
-conda install -c bioconda iqtree
-conda install -c conda-forge biopython
 conda install -c etetoolkit ete3 ete_toolchain
+conda install -c bioconda iqtree
+conda install -c biopython
 conda deactivate
 ```
 
