@@ -27,23 +27,19 @@ args, unknown = parser.parse_known_args()
 
 # import & root concatenated tree
 
-c = Tree(args.concat)
-
 og = open(args.outgroups)
 cout = []
 for line in og:
     line = line.strip("\n")
     cout.append(line)
 og.close()
-croot = c.get_common_ancestor(cout)
-c.set_outgroup(croot)
 
 # get a list of constrained gene trees to process
 gtrees = []
 
 for g in glob.glob(args.genetrees+"*"+args.ext):
     gtrees.append(g)
-
+gtrees.sort()
 
 # FUNCTIONS    
 def CommonTips(tree1, tree2):
@@ -75,6 +71,10 @@ def TerminalBranchLength(taxon, tree):
 
 
 for g in gtrees:
+    c = Tree(args.concat)
+    croot = c.get_common_ancestor(cout)
+    c.set_outgroup(croot)
+
     t = Tree(g)
 
     common_taxa = CommonTips(t, c)
