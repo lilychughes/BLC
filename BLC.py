@@ -25,6 +25,7 @@ parser.add_argument('-o', '--outgroups' , dest = 'outgroups' , type = str , defa
 args, unknown = parser.parse_known_args()
 #######
 
+
 # import & root concatenated tree
 
 og = open(args.outgroups)
@@ -93,10 +94,12 @@ for g in gtrees:
         outgroups = children[0].get_leaf_names()
         ancestor = t.get_common_ancestor(outgroups)
         if t == ancestor:
+            t.unroot()
             mp = t.get_midpoint_outgroup()
             t.set_outgroup(mp)        
             ancestor2 = t.get_common_ancestor(outgroups)
-            t.set_outgroup(ancestor2)
+            if ancestor2 != t:
+                t.set_outgroup(ancestor2)
         else:    
             t.set_outgroup(ancestor)
     t.ladderize()
@@ -149,4 +152,3 @@ for g in gtrees:
     out = open(g+".R2.txt", "w")
     out.write("R-squared without flagged taxa for "+g+": "+str(r_value**2)+"\n")
     out.close()
-    
